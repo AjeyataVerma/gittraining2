@@ -1,0 +1,9 @@
+Cherry picking is the act of picking a commit from a branch and applying it to another.
+git cherry-pick can be useful for undoing changes. For example, say a commit is accidently made to the wrong branch. You can switch to the correct branch and cherry-pick the commit to where it should belong.git cherry-pick can be useful for undoing changes. For example, say a commit is accidently made to the wrong branch. You can switch to the correct branch and cherry-pick the commit to where it should belong.git cherry-pick can be useful for undoing changes. For example, say a commit is accidently made to the wrong branch. You can switch to the correct branch and cherry-pick the commit to where it should belong.git cherry-pick can be useful for undoing changes.
+For example, say a commit is accidently made to the wrong branch. You can switch to the correct branch and cherry-pick the commit to where it should belong.
+===
+Steps of cherrypicking-
+
+1) note the commitid that we want to include in our branch by using the command  git log
+2) checkout to the branch in which we want to include the commit
+3) now use the command git cherry-pick <commitid>

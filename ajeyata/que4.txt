@@ -1,0 +1,33 @@
+Q4. How to delete one commit or multiple commits permanently Write command for it. 
+
+If we want to delete the last commit then the command is:
+git reset HEAD^
+
+If you need to delete more than just the last commit there are two methods you can use.
+The first is using rebase this will allow you to remove one or more consecutive commits the other is cherry-pick which allows you to remove non consecutive commits.
+
+Using rebase: for consecutive commits
+git rebase --onto <branch name>~<first commit number to remove> <branch name>~<first commit to be kept> <branch name>
+
+Using cherrypick: for non consecutive commits
+Step 1: Find the commit before the commit you want to remove git log
+
+Step 2: Checkout that commit git checkout <commit hash>
+
+Step 3: Make a new branch using your current checkout commit git checkout -b <new branch>
+
+Step 4: Now you need to add the commit after the removed commit git cherry-pick <commit hash>
+
+Step 5: Now repeat Step 4 for all other commits you want to keep.
+
+Step 6: Once all commits have been added to your new branch and have been commited. Check that everything is in the correct state and working as intended. Double check everything has been commited: git status
+
+Step 7: Switch to your broken branch git checkout <broken branch>
+
+Step 8: Now perform a hard reset on the broken branch to the commit prior to the one your want to remove git reset --hard <commit hash>
+
+Step 9: Merge your fixed branch into this branch git merge <branch name>
+
+Step 10: Push the merged changes back to origin. WARNING: This will overwrite the remote repo! git push --force origin <branch name>
+
+

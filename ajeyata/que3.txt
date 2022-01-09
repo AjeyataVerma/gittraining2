@@ -1,0 +1,26 @@
+Q3. How to combine two commits into one commit? For Example, you have 4 different commits C1, C2, C3, and  C4 and you to combine C2 and C3 into one single commit. 
+
+Squashing is done if you want to combine two or more commints into a single one.
+This can be done for many reasons, one of which being that the source history needs to be cleaned up before sharing with your team
+ or submitting a pull request to an open source project. 
+
+In order to squash the commits you'll need to use the rebase command like this:
+
+$ git rebase -i HEAD~4
+
+This tells Git to re-apply the last 4 commits on top of another base tip.
+The -i flag is short for --interactive, which will bring up your default text editor so you can edit the commands before rebasing.
+
+For our example above we'd see a text editor with the last 4 commits in reverse order, like the following:
+
+pick b1339db Fixed issue #421
+pick cc4f2b5 Didn't work, trying something else
+pick 7729f48 Fixed typo
+pick b7c864c Seriously, #421 is fixed now
+Any commit with the "picK" keyword will remain in the source tree. However if you replace "pick" with "squash" then that commit will be combined with the previous one. Continuing with our example, we would want to combine the commits like this:
+
+pick b1339db Fixed issue #421
+squash cc4f2b5 Didn't work, trying something else
+squash 7729f48 Fixed typo
+squash b7c864c Seriously, #421 is fixed now
+Saving your edits to this file will result in a single commit that is the combination of changes from all four, with the commit message being a combination of all 4 as well. To specify a new commit message you should use "reword" instead of "pick" on the first commit.

@@ -1,0 +1,25 @@
+Q.Difference between --force push and --force-with-lease, You have to show the use of both, also you have to show in what scenario --force-with-lease is used?
+
+When there is a git push you want to perform and the remote repo rejects it, there is a dangerous way to make it work:
+git push --force
+
+This dangerous method is so popular most IDEs have a special checkbox for it.
+On the other hand, the IDEs usually have no checkbox for force-with-lease, it’s not usually mentioned in the documents
+
+git push --force-with-lease
+
+When to Use Force with Lease
+Assuming a regular push does not work, one does not need to use force if they are doing decent day-to-day work. 
+Every day-to-day need is satisfied with force-with-lease. These include any sort of a rebase, particularly:
+Rebase a branch onto another branch,
+Rewording a commit in the past,
+Squashing a few commits together,
+Reordering the commits, or
+Changing the author of a previous commit.
+
+
+When to Use Force
+When doing something nasty. This includes:
+Removing a commit together with its contributions from history,
+Removing a large file that was accidentally committed from history,
+Removing a folder from the repo together with all its history.
